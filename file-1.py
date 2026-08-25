@@ -94,3 +94,30 @@ while number > 0:
     number -= 1
 else:
     print(f'number = {number}. Finish')
+
+message = 'Hello'
+
+for i in message:
+    print(i)
+
+for i in range(0, 10, 2):
+    print(i, end=' ')
+else:
+    print('\nLoop is end')
+
+i = 1
+j = 1
+while i < 10:
+    while j < 10:
+        print(i*j, end='\t')
+        j += 1
+    print('\n')
+    j=1
+    i += 1
+
+number = 0
+while number < 5:
+    number +=1
+    if number == 3:
+        continue
+    print(f'number = {number}')
