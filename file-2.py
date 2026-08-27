@@ -108,33 +108,117 @@ def say_hello():
 
 # do_operation(5,4, lambda a,b: a+b)
 # do_operation(5,4, lambda a,b: a*b)
-name = 'Tom'
+# name = 'Tom'
 
-def say_hi():
-    global name 
-    name = 'Anna'
-    print(f'Hello, {name}')
-    age = 32
-    print(f'Age: {age}')
+# def say_hi():
+#     global name 
+#     name = 'Anna'
+#     print(f'Hello, {name}')
+#     age = 32
+#     print(f'Age: {age}')
 
-def say_bye():
-    #name = 'Jim'
-    print(f'Goodbye, {name}')
-    age = 35
-    print(f'Age: {age}')
+# def say_bye():
+#     #name = 'Jim'
+#     print(f'Goodbye, {name}')
+#     age = 35
+#     print(f'Age: {age}')
 
-say_hi()
-say_bye()
+# say_hi()
+# say_bye()
 
-def outer():
-    n = 5
+# def outer():
+#     n = 5
 
-    def inner():
-        nonlocal n
-        n = 25
-        print(n)
+#     def inner():
+#         nonlocal n
+#         n += 1
+#         print(n)
 
-    inner()
-    print(n)
+#     return inner
+    
+# fn = outer()
+# fn()
+# fn()
+# fn()
 
-outer()
+# def multiply(n):
+#     def inner(m): return n*m
+
+#     return inner
+
+# fn = multiply(5)
+# print(fn(5))
+# print(fn(6))
+# print(fn(7))
+
+# def select(input_func):
+#     def output_func():
+#         print('*****************')
+#         input_func()
+#         print('*****************')
+#     return output_func
+
+# @select
+# def hello():
+#     print('Hello test')
+
+# hello()
+
+# def changecase(func):
+#     def myinner():
+#         return func().upper()
+#     return myinner
+
+# @changecase
+# def myfunction():
+#     return 'Hello Anna'
+
+# print(myfunction())
+
+# def null_decorator(func):
+#     return func
+
+# def uppercase(func):
+#     def wrapper():
+#         original_result = func()
+#         modified_result = original_result.upper()
+#         return modified_result
+#     return wrapper
+
+# @uppercase
+# def greet():
+#     return 'Hello, decorator!!!'
+
+# print(greet())
+
+# def check(input_func):
+#     def output_func(*args):
+#         name = args[0]
+#         age = args[1]
+#         age = 40
+#         input_func(name.upper(),age)
+#     return output_func
+
+# @check
+# def print_person(name, age):
+#     print(f'Name: {name} Age: {age}')
+
+# print_person('Anna', 32)
+
+def check(input_func):
+    def output_func(*args):
+        result = input_func(*args)
+        if result < 0:
+            result = 0
+        return result
+    return output_func
+
+@check
+def sum(a,b):
+    return a+b
+
+result1 = sum(10, 20)
+print(result1)
+
+result2 = sum(10, -20)
+print(result2)
